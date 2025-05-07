@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'page_one.dart';
-import 'page_two.dart';
+import 'contacts.dart';
+import 'setting.dart';
+import 'home.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -10,9 +13,9 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int _selectedPageIndex = 0;
 
-  final List<Widget> _pages = [PageOne(), PageTwo()];
+  final List<Widget> _pages = [Home(), Contacts(), Setting()];
 
-  final List<String> _titles = ['Page One', 'Page Two'];
+  final List<String> _titles = ['Home', 'Contacts', 'Setting'];
 
   void _onSelectPage(int index) {
     setState(() {
@@ -30,8 +33,8 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               UserAccountsDrawerHeader(
-                accountName: Text("John Doe"),
-                accountEmail: Text("johndoe@example.com"),
+                accountName: Text("Amenti Kebede"),
+                accountEmail: Text("amentikebede@example.com"),
                 currentAccountPicture: CircleAvatar(
                   backgroundImage: NetworkImage(
                     'https://avatars.githubusercontent.com/u/1?v=4',
@@ -40,13 +43,18 @@ class _HomePageState extends State<HomePage> {
               ),
               ListTile(
                 leading: Icon(Icons.home),
-                title: Text('Page One'),
+                title: Text('Home'),
                 onTap: () => _onSelectPage(0),
               ),
               ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('Page Two'),
+                leading: Icon(Icons.contacts),
+                title: Text('Contacts'),
                 onTap: () => _onSelectPage(1),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('Setting'),
+                onTap: () => _onSelectPage(2),
               ),
               Divider(),
               ListTile(
